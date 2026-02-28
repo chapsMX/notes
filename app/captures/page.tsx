@@ -121,9 +121,16 @@ export default function Captures() {
                   <div className="relative h-48 w-full bg-gray-200 overflow-hidden">
                     {capture.attachments[0].url && (
                       <img
-                        src={capture.attachments[0].url}
+                        src={
+                          capture.attachments[0].url.startsWith('http')
+                            ? capture.attachments[0].url
+                            : `https://btpkekugwwolvojquxdo.supabase.co/storage/v1/object/public/captures/${capture.attachments[0].url}`
+                        }
                         alt={capture.title}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f0f0f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='16' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3ESin imagen%3C/text%3E%3C/svg%3E`;
+                        }}
                       />
                     )}
                   </div>
@@ -183,9 +190,16 @@ export default function Captures() {
                   <div className="w-full">
                     {selectedCapture.attachments[0].url && (
                       <img
-                        src={selectedCapture.attachments[0].url}
+                        src={
+                          selectedCapture.attachments[0].url.startsWith('http')
+                            ? selectedCapture.attachments[0].url
+                            : `https://btpkekugwwolvojquxdo.supabase.co/storage/v1/object/public/captures/${selectedCapture.attachments[0].url}`
+                        }
                         alt={selectedCapture.title}
                         className="w-full rounded-lg"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f0f0f0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EImagen no disponible%3C/text%3E%3C/svg%3E`;
+                        }}
                       />
                     )}
                   </div>
