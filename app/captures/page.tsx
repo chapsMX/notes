@@ -185,23 +185,25 @@ export default function Captures() {
               </div>
 
               <div className="p-6 space-y-6">
-                {/* Full image if exists */}
-                {selectedCapture.attachments && selectedCapture.attachments.length > 0 && (
+                {/* Full image if exists - from source_url or attachments */}
+                {(selectedCapture.source_url || (selectedCapture.attachments && selectedCapture.attachments.length > 0)) && (
                   <div className="w-full">
-                    {selectedCapture.attachments[0].url && (
-                      <img
-                        src={
-                          selectedCapture.attachments[0].url.startsWith('http')
-                            ? selectedCapture.attachments[0].url
-                            : `https://btpkekugwwolvojquxdo.supabase.co/storage/v1/object/public/captures/${selectedCapture.attachments[0].url}`
-                        }
-                        alt={selectedCapture.title}
-                        className="w-full rounded-lg"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f0f0f0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EImagen no disponible%3C/text%3E%3C/svg%3E`;
-                        }}
-                      />
-                    )}
+                    <img
+                      src={
+                        selectedCapture.source_url && selectedCapture.source_url.startsWith('http')
+                          ? selectedCapture.source_url
+                          : selectedCapture.attachments?.[0]?.url?.startsWith('http')
+                          ? selectedCapture.attachments[0].url
+                          : selectedCapture.attachments?.[0]?.url
+                          ? `https://btpkekugwwolvojquxdo.supabase.co/storage/v1/object/public/captures/${selectedCapture.attachments[0].url}`
+                          : ''
+                      }
+                      alt={selectedCapture.title}
+                      className="w-full rounded-lg"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f0f0f0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EImagen no disponible%3C/text%3E%3C/svg%3E`;
+                      }}
+                    />
                   </div>
                 )}
 
