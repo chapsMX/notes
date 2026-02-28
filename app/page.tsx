@@ -85,21 +85,21 @@ export default function Home() {
             <h2 className="font-semibold text-gray-800">Todas</h2>
             <p className="text-sm text-gray-600">Ver todo lo capturado</p>
           </Link>
-          <Link href="/categories/supermercado" className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+          <Link href="/shopping" className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
             <div className="text-3xl mb-2">🛒</div>
-            <h2 className="font-semibold text-gray-800">Supermercado</h2>
-            <p className="text-sm text-gray-600">Tu lista de compras</p>
-          </Link>
-          <Link href="/collections/c13studio" className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-            <div className="text-3xl mb-2">📸</div>
-            <h2 className="font-semibold text-gray-800">c13studio</h2>
-            <p className="text-sm text-gray-600">Inspiración y referencias</p>
+            <h2 className="font-semibold text-gray-800">Compras</h2>
+            <p className="text-sm text-gray-600">Tu lista del super</p>
           </Link>
           <Link href="/search" className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
             <div className="text-3xl mb-2">🔍</div>
             <h2 className="font-semibold text-gray-800">Buscar</h2>
             <p className="text-sm text-gray-600">Encuentra cualquier cosa</p>
           </Link>
+          <div className="bg-gray-100 p-6 rounded-lg shadow">
+            <div className="text-3xl mb-2">🚀</div>
+            <h2 className="font-semibold text-gray-800">Próximamente</h2>
+            <p className="text-sm text-gray-600">Más funciones</p>
+          </div>
         </div>
 
         {/* Coming soon */}
