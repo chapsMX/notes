@@ -134,6 +134,19 @@ export default function Captures() {
                   )}
                   
                   <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-1">{capture.content}</p>
+                  
+                  {/* Source URL if exists */}
+                  {capture.source_url && (
+                    <a
+                      href={capture.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-blue-600 hover:text-blue-800 hover:underline mb-3 break-all"
+                    >
+                      🔗 {capture.source_platform || 'Link'}
+                    </a>
+                  )}
+                  
                   <div className="text-xs text-gray-500">
                     {new Date(capture.created_at).toLocaleDateString('es-MX')}
                   </div>
